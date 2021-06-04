@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_margin="2dp"
+    android:orientation="horizontal"
+    android:background="@drawable/duongvien"
+    android:layout_height="60dp">
+
+    <ImageView
+        android:layout_gravity="center_vertical"
+        android:scaleType="fitXY"
+        android:paddingLeft="7dp"
+        android:id="@+id/imageView_truyenmoi"
+        android:layout_width="50dp"
+        android:layout_height="55dp"
+        app:srcCompat="@drawable/anhtruyen" />
+    <LinearLayout
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:text="Tên truyện"
+            android:id="@+id/tentruyenmoi"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="3dp"
+            android:textSize="13sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="thể loại"
+            android:paddingLeft="20dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:paddingRight="20dp"
+            android:textSize="12sp"
+            android:id="@+id/theloai_truyenmoi"
+            android:drawableLeft="@drawable/ic_baseline_menu_book_24"/>
+
+    </LinearLayout>
+</LinearLayout>

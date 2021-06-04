@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="270dp"
+    android:layout_height="200dp"
+    android:orientation="vertical">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="270dp"
+            android:layout_height="200dp"
+            android:src="@drawable/anhnentdoc"
+            android:scaleType="fitXY"/>
+        <ImageView
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/ic_baseline_person_pin_24"
+            android:id="@+id/anhtaikhoan"/>
+
+        <TextView
+            android:layout_marginTop="90dp"
+            android:layout_marginLeft="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="tên tài khoản"
+            android:id="@+id/header_tentaikhoan"
+            android:textSize="18sp"
+            android:textColor="#FFFFFF"/>
+        <TextView
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="115dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="email@gmail.com"
+            android:textColor="#D9CCF1"
+            android:id="@+id/header_email"/>
+    </FrameLayout>
+
+</LinearLayout>
