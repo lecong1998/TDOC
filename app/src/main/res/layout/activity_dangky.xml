@@ -138,13 +138,13 @@
                    android:layout_height="wrap_content"
                    android:text="Đăng ký"
                    android:textColor="@color/white"
-                   android:background="#CC501398"
+                   android:background="@drawable/vientron"
                    android:id="@+id/dangky_dangky"/>
                <Button
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
                    android:textColor="@color/white"
-                   android:background="#CC501398"
+                   android:background="@drawable/vientron"
                    android:text="ĐÃ CÓ TÀI KHOẢN? ĐĂNG nhẬP"
                    android:layout_marginLeft="20dp"
                    android:layout_marginRight="20dp"

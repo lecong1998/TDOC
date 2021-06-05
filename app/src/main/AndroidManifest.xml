@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TDOC">
-        <activity android:name=".view_thongtintruyen"></activity>
+        <activity android:name=".dangnoidungtruyen"></activity>
+        <activity android:name=".hienthinoidungtruyen" />
+        <activity android:name=".list_dschuong" />
+        <activity android:name=".view_thongtintruyen" />
         <activity android:name=".theloai" />
         <activity android:name=".dialog_dangtruyen" />
         <activity android:name=".main_home" />

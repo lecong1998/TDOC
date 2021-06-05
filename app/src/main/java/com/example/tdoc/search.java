@@ -4,29 +4,23 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.SearchManager;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.tdoc.adapter.adapter_taikhoan;
 import com.example.tdoc.adapter.adapter_truyen;
-import com.example.tdoc.database.database;
-import com.example.tdoc.database.database_truyen;
 import com.example.tdoc.database.dulieutruyen;
 import com.example.tdoc.thongtin.taikhoan;
 import com.example.tdoc.thongtin.truyen;
@@ -140,6 +134,22 @@ public class search extends AppCompatActivity {
         dulieutruyen.setTruyenArrayList();
         adaptertruyen = new adapter_truyen(dulieutruyen.getTruyenArrayList(),this);
         listView_search.setAdapter(adaptertruyen);
+
+
+        listView_search.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long d) {
+                Intent intent_item = new Intent(search.this,view_thongtintruyen.class);
+                String tent =   adaptertruyen.getTruyenArrayList().get(position).getTentruyen();
+                intent_item.putExtra("tentruyen",tent);
+                intent_item.putExtra("tentaikhoan",tentaikhoan);
+                intent_item.putExtra("email",email);
+                intent_item.putExtra("phanquyen",phanquyen);
+                intent_item.putExtra("id",id);
+                startActivity(intent_item);
+
+            }
+        });
 
         /*-------------------------------------------------------*/
 

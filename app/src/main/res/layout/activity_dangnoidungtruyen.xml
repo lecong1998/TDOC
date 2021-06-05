@@ -1,22 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
+    android:layout_height="match_parent"
     android:background="@drawable/anhnentdoc"
-    android:layout_height="match_parent">
-
+    android:orientation="vertical"
+    tools:context=".dangnoidungtruyen">
     <LinearLayout
         android:background="#CC000000"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:gravity="left">
+        android:orientation="horizontal">
         <ImageButton
             android:layout_width="40dp"
             android:layout_height="match_parent"
             android:src="@drawable/ic_baseline_arrow_back_24"
-            android:id="@+id/back_dialog_dangtruyen"
-            android:background="#00000000"/>
-
+            android:background="#00000000"
+            android:id="@+id/back_dangnoidungtruyen"/>
+        <TextView
+            android:id="@+id/tentruyencandang"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:text="Tên truyện"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:textStyle="bold"/>
     </LinearLayout>
     <TextView
         android:layout_marginTop="20dp"
@@ -42,8 +53,8 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Tên truyện cần đăng"
-                android:id="@+id/edt_tentruyencandang"
+                android:hint="Chương số"
+                android:id="@+id/edt_chuongso"
                 android:paddingLeft="10dp"
                 android:drawableRight="@drawable/ic_baseline_menu_book_24"
                 />
@@ -52,7 +63,6 @@
 
 
     </LinearLayout>
-
     <LinearLayout
         android:background="@color/white"
         android:layout_marginLeft="30dp"
@@ -68,8 +78,8 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Thể loại"
-                android:id="@+id/edt_theloai"
+                android:hint="Tiêu đề"
+                android:id="@+id/edt_tieude"
                 android:paddingLeft="10dp"
                 android:drawableRight="@drawable/ic_baseline_menu_book_24"
                 />
@@ -78,42 +88,25 @@
 
 
     </LinearLayout>
-
     <LinearLayout
-        android:weightSum="10"
-        android:layout_marginRight="30dp"
+        android:background="@color/white"
         android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@color/white">
+        android:layout_height="300dp"
+        android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_weight="9"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
 
-            <com.google.android.material.textfield.TextInputLayout
+            <EditText
+                android:paddingRight="10dp"
+                android:gravity="top"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Địa chỉ ảnh"
-                    android:paddingLeft="10dp"
-                    android:id="@+id/diachianh"/>
-            </com.google.android.material.textfield.TextInputLayout>
-        </LinearLayout>
-
-        <ImageButton
-            android:layout_weight="1"
-            android:layout_alignParentRight="true"
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_baseline_attach_file_24"
-            android:id="@+id/themanhtruyen"/>
+                android:layout_height="match_parent"
+                android:hint="nội dung truyện cần đăng"
+                android:id="@+id/edt_noidungtruyenj"
+                android:paddingLeft="10dp"
+                />
     </LinearLayout>
     <Button
         android:layout_marginRight="50dp"
@@ -125,5 +118,5 @@
         android:textSize="20sp"
         android:text="Đăng truyện"
         android:background="@drawable/vientron"
-        android:id="@+id/dangtruyen"/>
+        android:id="@+id/dangnoidungtruyen"/>
 </LinearLayout>

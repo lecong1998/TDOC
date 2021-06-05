@@ -22,6 +22,9 @@ public class adapter_truyen extends BaseAdapter {
     private ArrayList<truyen>  truyenArrayList;
     private Context context;
 
+    public ArrayList<truyen> getTruyenArrayList() {
+        return truyenArrayList;
+    }
 
     public adapter_truyen(ArrayList<truyen> truyenArrayList, Context context) {
         this.truyenArrayList = truyenArrayList;

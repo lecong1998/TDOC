@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -154,6 +155,21 @@ public class huyenhuyen extends AppCompatActivity {
 
         adapter_truyen = new adapter_truyen(truyenhuyenhuyen(dulieutruyen.getTruyenArrayList()),this);
         listView.setAdapter(adapter_truyen);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long d) {
+                Intent intent_item = new Intent(huyenhuyen.this,view_thongtintruyen.class);
+                String tent =   adapter_truyen.getTruyenArrayList().get(position).getTentruyen();
+                intent_item.putExtra("tentruyen",tent);
+                intent_item.putExtra("tentaikhoan",tentaikhoan);
+                intent_item.putExtra("email",email);
+                intent_item.putExtra("phanquyen",phanquyen);
+                intent_item.putExtra("id",id);
+                startActivity(intent_item);
+
+            }
+        });
 
 
     }

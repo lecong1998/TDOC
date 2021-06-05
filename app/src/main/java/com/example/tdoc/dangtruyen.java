@@ -2,6 +2,7 @@ package com.example.tdoc;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -10,8 +11,11 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -43,10 +47,12 @@ public class dangtruyen extends AppCompatActivity {
     NavigationView navigationView_dangtruyen;
 
 
-    com.example.tdoc.database.dulieutruyen dulieutruyen;
+
 
     ArrayList<truyen> truyens;
     com.example.tdoc.adapter.adapter_truyen adapter_truyen;
+
+   dulieutruyen dulieutruyen = new dulieutruyen();
 
 
     @Override
@@ -127,18 +133,8 @@ public class dangtruyen extends AppCompatActivity {
             }
         });
 
-        /*-----------------------------------------------------------*/
-
-        btndangtruyenmoi = findViewById(R.id.btndangtruyenmoi);
-        btndangtruyenmoi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialogdangtruyen();
-            }
-        });
 
 
-        /*--------------------------------------------------------*/
 
         listView_truyendadang = findViewById(R.id.truyendadang);
 
@@ -147,18 +143,43 @@ public class dangtruyen extends AppCompatActivity {
 
         listView_truyendadang.setAdapter(adapter_truyen);
 
+        listView_truyendadang.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent_dangtruyen = new Intent(dangtruyen.this,dangnoidungtruyen.class);
+                String tentruyen = adapter_truyen.getTruyenArrayList().get(position).getTentruyen();
+                intent_dangtruyen.putExtra("tentruyen",tentruyen);
+                startActivity(intent_dangtruyen);
+            }
+        });
+
+        int maxsotruyen = sotruyendaco();
+
+        /*-----------------------------------------------------------*/
+
+        btndangtruyenmoi = findViewById(R.id.btndangtruyenmoi);
+        btndangtruyenmoi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent_dangtruyenmoi = new Intent(dangtruyen.this,dialog_dangtruyen.class);
+                intent_dangtruyenmoi.putExtra("sotruyendaco",maxsotruyen);
+                intent_dangtruyenmoi.putExtra("id",id);
+                startActivity(intent_dangtruyenmoi);
+            }
+        });
+
+
+        /*--------------------------------------------------------*/
+
+
+
+
+
+
 
     }
 
-    public void dialogdangtruyen()
-    {
-        Dialog dialog = new Dialog(this);
-        dialog.setContentView(R.layout.dialog_dangtruyen);
 
-        EditText editText_truyentruyencandang;
-
-
-    }
 
     @Override
     public void onBackPressed() {
@@ -175,7 +196,7 @@ public class dangtruyen extends AppCompatActivity {
     public ArrayList<truyen> truyentaikhoandadang(int i)
     {
         ArrayList<truyen> truyenArrayList = new ArrayList<>();
-        dulieutruyen= new dulieutruyen();
+
         dulieutruyen.setTruyenArrayList();
         for(truyen truyen : dulieutruyen.getTruyenArrayList())
         {
@@ -187,5 +208,10 @@ public class dangtruyen extends AppCompatActivity {
 
         return  truyenArrayList;
 
+    }
+
+    public int sotruyendaco()
+    {
+        return dulieutruyen.getTruyenArrayList().size();
     }
 }

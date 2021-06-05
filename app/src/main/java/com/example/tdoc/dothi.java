@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -145,6 +146,21 @@ public class dothi extends AppCompatActivity {
         adapter_truyen = new adapter_truyen(truyendothi(dulieutruyen.getTruyenArrayList()),this);
         listView = (ListView) findViewById(R.id.listview_dothi);
         listView.setAdapter(adapter_truyen);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long d) {
+                Intent intent_item = new Intent(dothi.this,view_thongtintruyen.class);
+                String tent =   adapter_truyen.getTruyenArrayList().get(position).getTentruyen();
+                intent_item.putExtra("tentruyen",tent);
+                intent_item.putExtra("tentaikhoan",tentaikhoan);
+                intent_item.putExtra("email",email);
+                intent_item.putExtra("phanquyen",phanquyen);
+                intent_item.putExtra("id",id);
+                startActivity(intent_item);
+
+            }
+        });
 
     }
 

@@ -6,15 +6,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tdoc.adapter.adapter_dschuong;
 import com.example.tdoc.adapter.adapter_taikhoan;
 import com.example.tdoc.adapter.adapter_viewtruyen;
+import com.example.tdoc.database.dulieutruyen;
 import com.example.tdoc.thongtin.chuongtruyen;
 import com.example.tdoc.thongtin.taikhoan;
 import com.example.tdoc.thongtin.truyen;
@@ -33,13 +39,18 @@ public class view_thongtintruyen extends AppCompatActivity {
     ListView listView_header,listView_viewtruyen,listView_dschuong;
 
     ArrayList<taikhoan> taikhoans;
-    com.example.tdoc.adapter.adapter_taikhoan adapter_taikhoan;
+    adapter_taikhoan adapter_taikhoan;
 
 
-    com.example.tdoc.adapter.adapter_viewtruyen adapter_viewtruyen;
-    com.example.tdoc.adapter.adapter_dschuong adapter_dschuong;
+    adapter_viewtruyen adapter_viewtruyen;
+    adapter_dschuong adapter_dschuong;
     ArrayList<chuongtruyen> chuongtruyenArrayList;
     ArrayList<truyen> truyenArrayList;
+
+    Button btndschuong;
+
+
+
 
 
     @Override
@@ -49,16 +60,20 @@ public class view_thongtintruyen extends AppCompatActivity {
 
 
 
-        Intent intent_truyenthongtin = this.getIntent();
+
+
+        Intent intent_truyenthongtin = getIntent();
 
         String tentaikhoan = intent_truyenthongtin.getStringExtra("tentaikhoan");
         String email = intent_truyenthongtin.getStringExtra("email");
         int phanquyen = intent_truyenthongtin.getIntExtra("phanquyen",0);
         int id = intent_truyenthongtin.getIntExtra("id",0);
+        String tentruyen = intent_truyenthongtin.getStringExtra("tentruyen");
+
         taikhoans = new ArrayList<>();
         taikhoans.add(new taikhoan(tentaikhoan,email,phanquyen));
 
-        listView_header = findViewById(R.id.theloai_header);
+        listView_header = (ListView) findViewById(R.id.viewtruyen_header);
         adapter_taikhoan = new adapter_taikhoan(taikhoans,this);
         listView_header.setAdapter(adapter_taikhoan);
 
@@ -144,13 +159,55 @@ public class view_thongtintruyen extends AppCompatActivity {
 
         /*------------------------------------------------------------------------------*/
 
-        listView_viewtruyen = findViewById(R.id.listviewthongtin);
-        listView_dschuong = findViewById(R.id.danhsachchuong);
+
+
+
+        listView_viewtruyen = findViewById(R.id.listview_viewtruyen);
+
+
+
+       truyenArrayList= new ArrayList<>();
+       truyen truyen = thongtintruyen(tentruyen);
+        truyenArrayList.add(truyen);
+        adapter_viewtruyen = new adapter_viewtruyen(truyenArrayList,this);
+        listView_viewtruyen.setAdapter(adapter_viewtruyen);
+
+
+
+        /*---------------------------------------------------*/
+
+
+        btndschuong = findViewById(R.id.danhsachchuong);
+
+        btndschuong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent_dschuong = new Intent(view_thongtintruyen.this,list_dschuong.class);
+                intent_dschuong.putExtra("tentruyen",tentruyen);
+
+                startActivity(intent_dschuong);
+            }
+        });
 
     }
 
 
 
+   public truyen thongtintruyen(String tentruyen2)
+    {
+
+        dulieutruyen dulieutruyen = new dulieutruyen();
+        dulieutruyen.setTruyenArrayList();
+        for(truyen truyen1 : dulieutruyen.getTruyenArrayList())
+        {
+            if(truyen1.getTentruyen().equals(tentruyen2))
+            {
+
+                return truyen1;
+            }
+        }
+        return null;
+    }
 
 
 

@@ -21,10 +21,11 @@ public class adapter_truyenmoi extends RecyclerView.Adapter<adapter_truyenmoi.vi
 
     private Context context;
     private ArrayList<truyen> truyenArrayList;
-
-    public adapter_truyenmoi(Context context, ArrayList<truyen> truyenArrayList) {
+    private OnItemClickListener listener;
+    public adapter_truyenmoi(Context context, ArrayList<truyen> truyenArrayList, OnItemClickListener listener) {
         this.context = context;
         this.truyenArrayList = truyenArrayList;
+        this.listener=listener;
     }
 
     @NonNull
@@ -47,7 +48,7 @@ public class adapter_truyenmoi extends RecyclerView.Adapter<adapter_truyenmoi.vi
         holder.img_anhtruyen.setImageResource(truyen.getAnhtruyen());
         holder.textView_tentruyen.setText(truyen.getTentruyen());
         holder.textView_theloai.setText(truyen.getTheloai());
-
+        holder.truyen = truyenArrayList.get(position);
 
     }
 
@@ -57,6 +58,8 @@ public class adapter_truyenmoi extends RecyclerView.Adapter<adapter_truyenmoi.vi
     }
 
     public class viewholder extends RecyclerView.ViewHolder {
+
+        truyen truyen;
         ImageView img_anhtruyen;
         TextView textView_tentruyen;
         TextView textView_theloai;
@@ -69,6 +72,13 @@ public class adapter_truyenmoi extends RecyclerView.Adapter<adapter_truyenmoi.vi
             img_anhtruyen = (ImageView) itemView.findViewById(R.id.imageView_truyenmoi);
             textView_tentruyen = (TextView) itemView.findViewById(R.id.tentruyenmoi);
             textView_theloai = (TextView) itemView.findViewById(R.id.theloai_truyenmoi);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onClick(truyen);
+                }
+            });
         }
     }
 }

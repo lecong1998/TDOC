@@ -4,7 +4,6 @@ package com.example.tdoc;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -19,25 +18,23 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.example.tdoc.adapter.OnItemClickListener;
-import com.example.tdoc.adapter.adapter_mucchon;
 import com.example.tdoc.adapter.adapter_taikhoan;
 import com.example.tdoc.adapter.adapter_truyenhot;
 import com.example.tdoc.adapter.adapter_truyenmoi;
 import com.example.tdoc.database.dulieutruyen;
-import com.example.tdoc.thongtin.mucchon;
 import com.example.tdoc.thongtin.taikhoan;
 import com.example.tdoc.thongtin.truyen;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 
-public class main_home extends AppCompatActivity implements OnItemClickListener {
+public class main_home extends AppCompatActivity  implements OnItemClickListener {
 
 
     DrawerLayout drawerLayout;
@@ -59,23 +56,25 @@ public class main_home extends AppCompatActivity implements OnItemClickListener 
     adapter_taikhoan  adapter_taikhoan;
 
 
-    adapter_mucchon adapter_mucchon;
-    ArrayList<mucchon> mucchonArrayList;
+    ImageView img1,img2,img3,img4,img5;
 
     taikhoan taikhoan;
-
-    Intent intent_truyenthongtin = this.getIntent();
-
-    String tentaikhoan = intent_truyenthongtin.getStringExtra("tentaikhoan");
-    String email = intent_truyenthongtin.getStringExtra("email");
-    int phanquyen = intent_truyenthongtin.getIntExtra("phanquyen",0);
-    int id = intent_truyenthongtin.getIntExtra("id",0);
+    String tentaikhoan;
+    String email;
+    int phanquyen;
+    int id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_home);
 
+        Intent intent_truyenthongtin = getIntent();
+
+         tentaikhoan = intent_truyenthongtin.getStringExtra("tentaikhoan");
+         email = intent_truyenthongtin.getStringExtra("email");
+         phanquyen = intent_truyenthongtin.getIntExtra("phanquyen",0);
+         id = intent_truyenthongtin.getIntExtra("id",0);
 
 
 
@@ -166,6 +165,77 @@ public class main_home extends AppCompatActivity implements OnItemClickListener 
         /*------------------------------------------------------------------*/
 
 
+        img1 = findViewById(R.id.mathienky);
+        img2 = findViewById(R.id.thanmo);
+        img3 = findViewById(R.id.vucucthienha);
+        img4 = findViewById(R.id.bothienky);
+        img5 = findViewById(R.id.thuvienthiendao);
+
+        img1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent_item = new Intent(main_home.this,view_thongtintruyen.class);
+                String tent =   "Ma Thiên Ký";
+                intent_item.putExtra("tentruyen",tent);
+                intent_item.putExtra("tentaikhoan",tentaikhoan);
+                intent_item.putExtra("email",email);
+                intent_item.putExtra("phanquyen",phanquyen);
+                intent_item.putExtra("id",id);
+                startActivity(intent_item);
+            }
+        });
+        img2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent_item = new Intent(main_home.this,view_thongtintruyen.class);
+                String tent =   "Thần mộ";
+                intent_item.putExtra("tentruyen",tent);
+                intent_item.putExtra("tentaikhoan",tentaikhoan);
+                intent_item.putExtra("email",email);
+                intent_item.putExtra("phanquyen",phanquyen);
+                intent_item.putExtra("id",id);
+                startActivity(intent_item);
+            }
+        });
+        img3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent_item = new Intent(main_home.this,view_thongtintruyen.class);
+                String tent =   "Vũ Cực thiên hạ";
+                intent_item.putExtra("tentruyen",tent);
+                intent_item.putExtra("tentaikhoan",tentaikhoan);
+                intent_item.putExtra("email",email);
+                intent_item.putExtra("phanquyen",phanquyen);
+                intent_item.putExtra("id",id);
+                startActivity(intent_item);
+            }
+        });
+        img4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent_item = new Intent(main_home.this,view_thongtintruyen.class);
+                String tent =   "Bổ Thiên Ký";
+                intent_item.putExtra("tentruyen",tent);
+                intent_item.putExtra("tentaikhoan",tentaikhoan);
+                intent_item.putExtra("email",email);
+                intent_item.putExtra("phanquyen",phanquyen);
+                intent_item.putExtra("id",id);
+                startActivity(intent_item);
+            }
+        });
+        img5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent_item = new Intent(main_home.this,view_thongtintruyen.class);
+                String tent =   "Thiên đạo thư viện";
+                intent_item.putExtra("tentruyen",tent);
+                intent_item.putExtra("tentaikhoan",tentaikhoan);
+                intent_item.putExtra("email",email);
+                intent_item.putExtra("phanquyen",phanquyen);
+                intent_item.putExtra("id",id);
+                startActivity(intent_item);
+            }
+        });
         /*------------------------------------------------------------------*/
 
         /*---------------------------------------------------------------------*/
@@ -201,8 +271,8 @@ public class main_home extends AppCompatActivity implements OnItemClickListener 
 
         dulieutruyen  dulieutruyen = new dulieutruyen();
         dulieutruyen.setTruyenArrayList();
-        adapter_truyenmoi = new adapter_truyenmoi(this,dulieutruyen.getTruyenArrayList());
-        adapter_truyenmoi.notifyDataSetChanged();
+        adapter_truyenmoi = new adapter_truyenmoi(this,dulieutruyen.getTruyenArrayList(),this);
+     
 
         LinearLayoutManager layoutManager_truyen = new LinearLayoutManager(this);
 
@@ -220,7 +290,7 @@ public class main_home extends AppCompatActivity implements OnItemClickListener 
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
 
-        adapter_truyenhot = new adapter_truyenhot(this,dulieutruyen.getTruyenArrayList());
+        adapter_truyenhot = new adapter_truyenhot(this,dulieutruyen.getTruyenArrayList(),this);
 
         recyclerView.setAdapter(adapter_truyenhot);
 
@@ -274,11 +344,15 @@ public class main_home extends AppCompatActivity implements OnItemClickListener 
     }
 
 
-
-
     @Override
-    public void onClick(mucchon mucchon) {
-        Toast.makeText(main_home.this,"đang click muc "+ mucchon.getTitle(),Toast.LENGTH_SHORT).show();
-
+    public void onClick(truyen truyen) {
+        Intent intent_item = new Intent(main_home.this,view_thongtintruyen.class);
+        String tent =   truyen.getTentruyen();
+        intent_item.putExtra("tentruyen",tent);
+        intent_item.putExtra("tentaikhoan",tentaikhoan);
+        intent_item.putExtra("email",email);
+        intent_item.putExtra("phanquyen",phanquyen);
+        intent_item.putExtra("id",id);
+        startActivity(intent_item);
     }
 }

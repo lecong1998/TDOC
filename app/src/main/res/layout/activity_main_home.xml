@@ -42,7 +42,7 @@
                     app:title="TDOC"
                     app:titleTextColor="@color/white"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="?attr/actionBarSize"
                     android:background="#CC000000"
                     android:id="@+id/tool_bar">
 
@@ -54,6 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:nestedScrollingEnabled="false"
+                android:focusableInTouchMode="false"
                 android:fillViewport="true">
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -288,9 +289,12 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
                             <androidx.recyclerview.widget.RecyclerView
+                                android:focusableInTouchMode="true"
+                                android:scrollbars="none"
+                                android:focusable="false"
                                 android:nestedScrollingEnabled="true"
                                 android:layout_width="match_parent"
-                                android:layout_height="300dp"
+                                android:layout_height="wrap_content"
                                 android:id="@+id/recycler_truyenmoi"/>
                         </LinearLayout>
                     </LinearLayout>

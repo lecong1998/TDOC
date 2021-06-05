@@ -80,14 +80,14 @@
             android:layout_height="wrap_content"
             android:text="ĐĂNG NHẬP"
             android:id="@+id/dangnhap_dangnhap"
-            android:background="#CC501398"
+            android:background="@drawable/vientron"
             android:textColor="@color/white"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:text="CHƯA CÓ TÀI KHOẢN? ĐĂNG KÝ"
-            android:background="#CC501398"
+            android:background="@drawable/vientron"
             android:layout_marginTop="30dp"
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"

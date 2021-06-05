@@ -9,19 +9,20 @@ import android.widget.TextView;
 
 import com.example.tdoc.R;
 import com.example.tdoc.thongtin.chuongtruyen;
+import com.example.tdoc.thongtin.truyen;
 
 import java.util.ArrayList;
 
 public class adapter_dschuong extends BaseAdapter {
 
-    private String tentruyen;
+    private com.example.tdoc.thongtin.truyen truyen;
     private ArrayList<chuongtruyen> chuongtruyens;
     private Context context;
 
 
-    public adapter_dschuong(String tentruyen, ArrayList<chuongtruyen> chuongtruyens, Context context) {
-        this.tentruyen = tentruyen;
-        this.chuongtruyens = chuongtruyens;
+    public adapter_dschuong(truyen truyen, Context context) {
+        this.truyen = truyen;
+        this.chuongtruyens = truyen.getChuongtruyenArrayList();
         this.context = context;
     }
 

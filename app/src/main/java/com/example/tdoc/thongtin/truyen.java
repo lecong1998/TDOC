@@ -14,6 +14,19 @@ public class truyen {
     private String motatruyen;
     private ArrayList<chuongtruyen> chuongtruyenArrayList;
 
+    public truyen(int id, String tentruyen, int anhtruyen, String theloai, int taikhoandang, int luotxem, int luotthich, String motatruyen, ArrayList<chuongtruyen> chuongtruyenArrayList) {
+        this.id = id;
+        this.tentruyen = tentruyen;
+        this.anhtruyen = anhtruyen;
+        this.theloai = theloai;
+        this.taikhoandang = taikhoandang;
+        this.sochuong = chuongtruyenArrayList.size();
+        this.luotxem = luotxem;
+        this.luotthich = luotthich;
+        this.motatruyen = motatruyen;
+        this.chuongtruyenArrayList = chuongtruyenArrayList;
+    }
+
     public truyen(int id, String tentruyen, int anhtruyen, String theloai, int taikhoandang) {
         this.id = id;
         this.tentruyen = tentruyen;

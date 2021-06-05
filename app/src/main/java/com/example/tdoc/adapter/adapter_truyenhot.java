@@ -23,22 +23,31 @@ public class adapter_truyenhot extends RecyclerView.Adapter<adapter_truyenhot.Vi
 
     private Context context;
     private ArrayList<truyen> truyenArrayList;
+    private OnItemClickListener listener;
 
-    public adapter_truyenhot(Context context, ArrayList<truyen> truyenArrayList) {
+    public adapter_truyenhot(Context context, ArrayList<truyen> truyenArrayList,OnItemClickListener listener) {
         this.context = context;
         this.truyenArrayList = truyenArrayList;
+        this.listener=listener;
     }
 
 
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
+        truyen truyen;
         private ImageView img_truyenhot;
         private TextView txt_tentruyen_hot;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             img_truyenhot = itemView.findViewById(R.id.img_anhtruyenhot);
             txt_tentruyen_hot = itemView.findViewById(R.id.tentruyenhot);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onClick(truyen);
+                }
+            });
         }
     }
 
@@ -57,9 +66,9 @@ public class adapter_truyenhot extends RecyclerView.Adapter<adapter_truyenhot.Vi
     public void onBindViewHolder(@NonNull adapter_truyenhot.ViewHolder holder, int position) {
 
         truyen truyen = truyenArrayList.get(position);
-        //Picasso.get().load(truyen.getAnhtruyen()).placeholder(R.drawable.anhtruyen).into(holder.img_truyenhot);
         holder.img_truyenhot.setImageResource(truyen.getAnhtruyen());
         holder.txt_tentruyen_hot.setText(truyen.getTentruyen());
+        holder.truyen=truyenArrayList.get(position);
 
     }
 
