@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -47,14 +48,15 @@ public class main_home extends AppCompatActivity  implements OnItemClickListener
 
     adapter_truyenmoi adapter_truyenmoi;
 
-    ListView listView,listView_taikhoan,listView_menu;
+    ListView listView,listView_taikhoan;
 
-    RecyclerView recyclerView,recyclerView_truyenmoi,recyclerView_menu;
+    RecyclerView recyclerView,recyclerView_truyenmoi;
 
     adapter_truyenhot adapter_truyenhot;
 
     adapter_taikhoan  adapter_taikhoan;
 
+    Button xemthem;
 
     ImageView img1,img2,img3,img4,img5;
 
@@ -242,7 +244,18 @@ public class main_home extends AppCompatActivity  implements OnItemClickListener
 
 
 
-
+        xemthem = findViewById(R.id.xemthem);
+        xemthem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent_item = new Intent(main_home.this,List_truyenmoi.class);
+                intent_item.putExtra("tentaikhoan",tentaikhoan);
+                intent_item.putExtra("email",email);
+                intent_item.putExtra("phanquyen",phanquyen);
+                intent_item.putExtra("id",id);
+                startActivity(intent_item);
+            }
+        });
 
 
 
@@ -271,7 +284,13 @@ public class main_home extends AppCompatActivity  implements OnItemClickListener
 
         dulieutruyen  dulieutruyen = new dulieutruyen();
         dulieutruyen.setTruyenArrayList();
-        adapter_truyenmoi = new adapter_truyenmoi(this,dulieutruyen.getTruyenArrayList(),this);
+        ArrayList<truyen> truyens = new ArrayList<>();
+        int a = dulieutruyen.getTruyenArrayList().size();
+        for (int i = a-1;i>=a-5;i--)
+        {
+            truyens.add(dulieutruyen.getTruyenArrayList().get(i));
+        }
+        adapter_truyenmoi = new adapter_truyenmoi(this,truyens,this);
      
 
         LinearLayoutManager layoutManager_truyen = new LinearLayoutManager(this);

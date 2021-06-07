@@ -29,7 +29,6 @@ import java.util.ArrayList;
 
 public class dothi extends AppCompatActivity {
 
-
     ListView listView,listView_header;
     com.example.tdoc.database.dulieutruyen dulieutruyen;
     com.example.tdoc.adapter.adapter_truyen adapter_truyen;
@@ -57,7 +56,7 @@ public class dothi extends AppCompatActivity {
         taikhoans = new ArrayList<>();
         taikhoans.add(new taikhoan(tentaikhoan,email,phanquyen));
 
-        listView_header = findViewById(R.id.dongnhan_header);
+        listView_header = findViewById(R.id.dothi_header);
 
         adapter_taikhoan = new adapter_taikhoan(taikhoans,this);
 
@@ -140,7 +139,8 @@ public class dothi extends AppCompatActivity {
             }
         });
 
-        /*-------------------------------------------------------------------*/
+        /*---------------------------------------------------------------------------*/
+
         dulieutruyen = new dulieutruyen();
         dulieutruyen.setTruyenArrayList();
         adapter_truyen = new adapter_truyen(truyendothi(dulieutruyen.getTruyenArrayList()),this);
@@ -190,4 +190,5 @@ public class dothi extends AppCompatActivity {
         }
 
     }
+
 }

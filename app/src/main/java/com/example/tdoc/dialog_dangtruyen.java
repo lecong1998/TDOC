@@ -53,7 +53,9 @@ public class dialog_dangtruyen extends AppCompatActivity {
                 truyen truyen = new truyen(sotruyendaco+1,tentruyen,Integer.parseInt(diachianh),theloai,id);
 
                 dulieutruyen dulieutruyen = new dulieutruyen();
-                dulieutruyen.themtruyen(truyen);
+                dulieutruyen.setTruyenArrayList();
+                dulieutruyen.getTruyenArrayList().add(truyen);
+                onBackPressed();
             }
         });
 

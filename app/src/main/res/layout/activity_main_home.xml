@@ -283,6 +283,16 @@
                                 android:text="Truyện mới cập nhật"
                                 android:gravity="center_vertical"
                                 android:paddingLeft="10dp"/>
+                            <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="Xem thêm..."
+                                android:layout_alignParentRight="true"
+                                android:textColor="@color/white"
+                                android:background="#00000000"
+                                android:paddingRight="10dp"
+                                android:paddingLeft="10dp"
+                                android:id="@+id/xemthem"/>
                         </RelativeLayout>
                         <LinearLayout
                             android:background="#CC000000"
